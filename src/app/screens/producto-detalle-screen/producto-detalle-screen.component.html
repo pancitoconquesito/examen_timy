@@ -1,0 +1,54 @@
+<div class="container minheight">
+    <div class="row mb-5">
+        <div class="col-sm-12 col-lg-6">
+            <img src={{productoActual.img}} alt={{productoActual.titulo}}
+            class="img-producto p-4">
+        </div>
+        <div class="col-sm-12 col-lg-6 p-2">
+            
+            <div class="row">
+                <div class="col-10">
+                    <h2 class="font-weight-bold mb-3">{{productoActual.marca}}</h2>
+
+                </div>
+                <div class="col-2">
+                    <button (click)="favorito()" id="btn_f">
+                        <!-- <i class="fas fa-heart"  *ngIf="esFavorito"></i> -->
+                        <div  *ngIf="!esFavorito">
+                            <i class="far fa-heart"  id="icon_heart" ></i>
+                        </div>
+                        <div  *ngIf="esFavorito">
+                            <i class="fa fa-heart"  id="icon_heart" ></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+
+            <h2 class="font-weight-bold mb-5">{{productoActual.titulo}}</h2>
+            <p class="mb-4">{{productoActual.descripcion}}</p>
+            <p class="m-1">Conectividad : {{productoActual.conectividad}}</p>
+            <p class="m-1">Memoria Ram : {{productoActual.cant_memoria_ram}}GB</p>
+            <p class="m-1">Procesador : {{productoActual.procesador}}</p>
+            <p class="m-1">Duracion Batería : {{productoActual.duracion_bateria}} mAh</p>
+            <p class="m-1">Ancho : {{productoActual.ancho}} cm</p>
+
+            <h2 class="font-weight-bold my-5">{{productoActual.precio |currency:'CL'}}</h2>
+            
+            <small>Cantidad</small>
+
+            <input class="ms-2" type="number" id="input_cantidad" name="quantity" min="1" max="10" value=1>
+
+            <div class="col-12 my-4">
+                <button (click)="agregarACarrito()" type="button" class="btn btn-success px-5 py-3">Agregar A la Bolsa</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2 class="my-5">Recomendaciones</h2>
+        <button type="button" class="btn btn-info mx-1 col-lg-2 m-2"
+        [routerLink]= "['/producto-detalle/',recomendacion._id_producto]"
+        *ngFor="let recomendacion of listaRecomendaciones">{{recomendacion.titulo_producto}}</button>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container minheight">
+    <div class="row my-5">
+        <h3 class="text-center display-4">Productos</h3>
+    </div>
+    <div class="row my-5">
+        <div class="col-12 col-md-10 ">
+            <div class="row">
+
+                <div *ngIf="listaVacia">
+                    <div class="alert alert-secondary" role="alert">
+                        Carrito vacio
+                      </div>
+                </div>
+
+                <div *ngIf="!listaVacia" id="lista">
+                    
+                    <div class="col-sm-12 col-md-6 card rounded m-2"
+                    *ngFor="let producto of listaProductos" >
+                        <app-card-producto-carrito [producto]=producto (event_quitar)="quitarProductoCarro($event)" ></app-card-producto-carrito>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 col-md-2 ">
+            
+            <h3>TOTAL = <span class="precio">{{total |currency:'CL'}}</span></h3>
+        </div>
+
+    </div>
+</div>

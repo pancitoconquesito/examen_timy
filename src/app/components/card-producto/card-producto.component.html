@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="row m-2">
+        <img class="card-img-top" src={{producto.img}} alt="img celular">
+            <div class="card-body">
+                <small>{{producto.marca}}</small>
+                <h5 class="card-title">{{producto.titulo}}</h5>
+
+                <!-- for estrellas -->
+                <div class="row mb-4">
+                    <div class="col-1"
+                    *ngFor="let estrella of listBoolEstrella">
+                        <i class="fas fa-star" *ngIf="estrella==true"></i>
+                        <i class="far fa-star" *ngIf="estrella==false"></i>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a class="btn btn-primary px-5 mt-2 mb-5" 
+                    [routerLink]= "['/producto-detalle/',producto._id]"
+                    >Ver</a>
+                </div>
+                <div >
+                    <p class="precio">{{producto.precio |currency:'CL'}}</p>
+                </div>
+            </div>
+    </div>
+</div>
